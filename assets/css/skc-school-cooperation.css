@@ -1,0 +1,381 @@
+/* skc-school-cooperation-page-20260719 */
+.skc-school-page {
+  background: #3e0911;
+  color: #f7e8df;
+}
+
+.skc-school-page .header {
+  background: linear-gradient(180deg, rgba(62, 9, 17, .96), rgba(62, 9, 17, .72));
+}
+
+.skc-school-shell {
+  overflow: hidden;
+  background: #3e0911;
+}
+
+.skc-school-hero {
+  min-height: 72vh;
+  display: flex;
+  align-items: flex-end;
+  padding: clamp(150px, 16vw, 230px) clamp(24px, 5vw, 86px) clamp(64px, 8vw, 120px);
+  position: relative;
+  isolation: isolate;
+}
+
+.skc-school-hero__inner {
+  max-width: 1180px;
+}
+
+.skc-school-hero__eyebrow,
+.skc-school-gallery__eyebrow {
+  color: #e57a2c;
+  margin-bottom: 20px;
+  letter-spacing: .08em;
+}
+
+.skc-school-hero__title {
+  margin: 0;
+  color: #e57a2c;
+  font-size: clamp(92px, 16vw, 260px);
+  line-height: .9;
+}
+
+.skc-school-hero__copy {
+  max-width: 920px;
+  margin-top: 28px;
+  font-size: clamp(22px, 2.4vw, 42px);
+  line-height: 1.24;
+  color: #fff4ed;
+}
+
+.skc-school-billboard {
+  background: #f8eee8;
+  color: #3e0911;
+  padding: clamp(56px, 8vw, 116px) 0;
+}
+
+.skc-school-billboard__header {
+  padding: 0 clamp(24px, 5vw, 86px) clamp(28px, 4vw, 52px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 520px);
+  gap: 32px;
+  align-items: end;
+}
+
+.skc-school-billboard__header h2,
+.skc-school-gallery__intro h2,
+.skc-school-cta h2 {
+  margin: 0;
+  font-size: clamp(52px, 7vw, 132px);
+  line-height: 1.02;
+}
+
+.skc-school-billboard__header p,
+.skc-school-gallery__intro p,
+.skc-school-cta p {
+  margin: 0;
+  font-size: clamp(18px, 1.4vw, 26px);
+  line-height: 1.45;
+}
+
+.skc-school-logo-strip {
+  width: 100%;
+  overflow: hidden;
+  background: #fff;
+  border-top: 1px solid rgba(62, 9, 17, .14);
+  border-bottom: 1px solid rgba(62, 9, 17, .14);
+  box-shadow: 0 24px 80px rgba(62, 9, 17, .12);
+}
+
+.skc-school-logo-strip__track {
+  display: flex;
+  width: max-content;
+  animation: skcSchoolMarquee 36s linear infinite;
+}
+
+.skc-school-logo-strip:hover .skc-school-logo-strip__track {
+  animation-play-state: paused;
+}
+
+.skc-school-logo-strip__list {
+  display: flex;
+  align-items: center;
+  gap: clamp(20px, 3vw, 48px);
+  margin: 0;
+  padding: clamp(22px, 3vw, 44px) clamp(20px, 3vw, 48px);
+  list-style: none;
+}
+
+.skc-school-logo-strip__item {
+  width: clamp(150px, 13vw, 260px);
+  height: clamp(78px, 7vw, 132px);
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid rgba(62, 9, 17, .1);
+  flex: 0 0 auto;
+  overflow: hidden;
+}
+
+.skc-school-logo-strip__item img {
+  max-width: 82%;
+  max-height: 68%;
+  object-fit: contain;
+  object-position: center center;
+  display: block;
+}
+
+
+.skc-school-logo-strip__item.logo-adjust-up img {
+  transform: translateY(-18%) scale(.96);
+}
+
+.skc-school-logo-strip__item.logo-adjust-up-more img {
+  transform: translateY(-30%) scale(.96);
+}
+
+.skc-school-logo-strip__item.logo-adjust-scale img {
+  max-width: 68%;
+  max-height: 52%;
+}
+
+.skc-school-logo-strip__item.logo-adjust-up.logo-adjust-scale img {
+  transform: translateY(-22%) scale(.9);
+}
+
+.skc-school-logo-strip__item.logo-adjust-cuibei img {
+  transform: translateY(-22%) scale(.96);
+}
+
+.skc-school-logo-strip__item.logo-adjust-taoyuan img {
+  transform: translateY(-38%) scale(.96);
+}
+
+.skc-school-logo-strip__item.logo-adjust-longcheng-high img {
+  transform: translateY(-20%) scale(.96);
+}@keyframes skcSchoolMarquee {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+
+.skc-school-types {
+  padding: clamp(70px, 9vw, 140px) clamp(24px, 5vw, 86px);
+}
+
+.skc-school-types__inner {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(18px, 2.6vw, 44px);
+}
+
+.skc-school-type-card {
+  min-height: clamp(420px, 34vw, 560px);
+  padding: clamp(34px, 4.2vw, 64px);
+  border: 1px solid rgba(255, 238, 226, .22);
+  border-radius: 18px;
+  background: linear-gradient(145deg, rgba(229, 122, 44, .18), rgba(255, 255, 255, .04));
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  align-content: start;
+  row-gap: clamp(28px, 3vw, 46px);
+}
+
+.skc-school-type-card__index {
+  color: #e57a2c;
+  font-size: clamp(74px, 9vw, 164px);
+  line-height: .86;
+}
+
+.skc-school-type-card h2 {
+  margin: 0;
+  font-size: clamp(42px, 5vw, 92px);
+  line-height: 1.12;
+  max-width: 8.5em;
+}
+
+.skc-school-type-card p {
+  margin: 0;
+  align-self: end;
+  max-width: 760px;
+  font-size: clamp(18px, 1.45vw, 27px);
+  line-height: 1.58;
+  color: rgba(255, 244, 237, .86);
+}
+
+.skc-school-gallery {
+  height: 100vh;
+  min-height: 100vh;
+  background: #111;
+  color: #f8eee8;
+  position: relative;
+  overflow: hidden;
+}
+
+.skc-school-gallery__sticky {
+  position: relative;
+  z-index: 2;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(52px, 6vw, 90px) 0;
+}
+
+.skc-school-gallery.is-wheel-locked .skc-school-gallery__sticky {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 20;
+  background: #111;
+}
+
+.skc-school-gallery__intro {
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto clamp(28px, 4vw, 52px);
+}
+
+.skc-school-gallery__intro p.value-serif {
+  max-width: 780px;
+  margin-top: 20px;
+  color: rgba(248, 238, 232, .82);
+}
+
+.skc-school-gallery__viewport {
+  width: 100%;
+  overflow: visible;
+}
+
+.skc-school-gallery__track {
+  display: flex;
+  align-items: center;
+  gap: clamp(24px, 4vw, 64px);
+  padding: 0 clamp(24px, 5vw, 86px);
+  width: max-content;
+  will-change: transform;
+}
+
+.skc-school-gallery-card {
+  width: clamp(320px, 36vw, 680px);
+  aspect-ratio: 4 / 3;
+  margin: 0;
+  flex: 0 0 auto;
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #3e0911;
+  box-shadow: 0 34px 90px rgba(0, 0, 0, .42);
+}
+
+.skc-school-gallery-card img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.skc-school-gallery-card figcaption {
+  position: absolute;
+  left: 18px;
+  bottom: 18px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .92);
+  color: #3e0911;
+  font-size: 15px;
+  line-height: 1;
+}
+
+.skc-school-cta {
+  min-height: 72vh;
+  padding: clamp(72px, 10vw, 150px) clamp(24px, 5vw, 86px);
+  display: flex;
+  align-items: center;
+}
+
+.skc-school-cta__inner {
+  max-width: 1180px;
+}
+
+.skc-school-cta h2 {
+  max-width: 1160px;
+  line-height: 1.12;
+  letter-spacing: 0;
+}
+
+.skc-school-cta p {
+  max-width: 860px;
+  margin-top: clamp(28px, 3vw, 46px);
+  color: rgba(255, 244, 237, .86);
+}
+
+.skc-school-cta .button {
+  margin-top: clamp(42px, 5vw, 68px);
+}
+
+[data-school-reveal] {
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skc-school-logo-strip__track {
+    animation: none;
+  }
+
+  .skc-school-gallery {
+    height: auto;
+  }
+
+  .skc-school-gallery__sticky {
+    position: relative;
+    height: auto;
+  }
+
+  .skc-school-gallery__track {
+    flex-wrap: wrap;
+    width: auto;
+  }
+}
+
+@media (max-width: 900px) {
+  .skc-school-hero {
+    min-height: 66vh;
+    padding-top: 130px;
+  }
+
+  .skc-school-billboard__header,
+  .skc-school-types__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .skc-school-type-card {
+    min-height: auto;
+  }
+
+  .skc-school-logo-strip__item {
+    width: 180px;
+    height: 90px;
+  }
+
+  .skc-school-gallery {
+    height: auto;
+  }
+
+  .skc-school-gallery__sticky {
+    position: relative;
+    height: auto;
+    display: block;
+  }
+
+  .skc-school-gallery__track {
+    width: auto;
+    overflow-x: auto;
+    padding-bottom: 28px;
+  }
+
+  .skc-school-gallery-card {
+    width: min(82vw, 420px);
+  }
+}
