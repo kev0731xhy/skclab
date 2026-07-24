@@ -1421,11 +1421,11 @@ body ::selection {
 
 /* skc-react-lab-cube-host-20260718 */
 .skc-lab-cube--react {
-  padding: 0 0 clamp(110px, 12vh, 190px) !important;
+  padding: 0 0 clamp(32px, 5vh, 72px) !important;
   margin: 0 !important;
-  background: transparent !important;
+  background: #E57A2C !important;
   color: inherit;
-  min-height: max(980px, 112vh) !important;
+  min-height: calc(100vh + clamp(32px, 5vh, 72px)) !important;
   overflow: visible;
 }
 
