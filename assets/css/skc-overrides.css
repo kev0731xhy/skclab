@@ -1421,11 +1421,11 @@ body ::selection {
 
 /* skc-react-lab-cube-host-20260718 */
 .skc-lab-cube--react {
-  padding: 0 0 clamp(32px, 5vh, 72px) !important;
+  padding: 0 !important;
   margin: 0 !important;
-  background: #E57A2C !important;
+  background: transparent !important;
   color: inherit;
-  min-height: calc(100vh + clamp(32px, 5vh, 72px)) !important;
+  min-height: auto !important;
   overflow: visible;
 }
 
@@ -1437,7 +1437,10 @@ body ::selection {
 .skc-lab-cube--react #skc-react-lab-cube-root {
   display: block;
   width: 100%;
-  min-height: inherit;
+}
+
+.skc-lab-cube--react .skc-react-cube-app {
+  min-height: calc(100vh + clamp(32px, 5vh, 72px)) !important;
 }
 
 /* skc-global-cursor-trail-20260718 */
