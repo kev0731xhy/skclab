@@ -22,85 +22,74 @@
 
   const gallery = document.querySelector('[data-school-horizontal-gallery]');
   const sticky = gallery ? gallery.querySelector('.skc-school-gallery__sticky') : null;
-  const track = document.querySelector('[data-school-gallery-track]');
-  if (!gallery || !sticky || !track || window.matchMedia('(max-width: 900px)').matches) return;
+  const track = gallery ? gallery.querySelector('[data-school-gallery-track]') : null;
+
+  if (!gallery || !sticky || !track || window.matchMedia('(max-width: 900px)').matches) {
+    return;
+  }
+
+  const getShift = () => {
+    const sidePadding = window.innerWidth * 0.1;
+    return Math.max(0, track.scrollWidth - window.innerWidth + sidePadding);
+  };
+
+  if (typeof window.ScrollTrigger !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+
+      gsap.to(track, {
+        x: () => -getShift(),
+        ease: 'none',
+        scrollTrigger: {
+          trigger: gallery,
+          start: 'top top',
+          end: () => `+=${Math.max(window.innerHeight * 1.6, getShift() * 1.05)}`,
+          pin: true,
+          pinSpacing: true,
+          scrub: 0.85,
+          anticipatePin: 1,
+        invalidateOnRefresh: true,
+      },
+    });
+
+    const refresh = () => ScrollTrigger.refresh();
+    track.querySelectorAll('img').forEach((img) => {
+      if (!img.complete) img.addEventListener('load', refresh, { once: true });
+    });
+    window.addEventListener('load', refresh, { once: true });
+
+    return;
+  }
 
   const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
   const setX = gsap.quickSetter(track, 'x', 'px');
 
-  let galleryTop = 0;
   let maxShift = 0;
   let progress = 0;
-  let isLocked = false;
 
   const measure = () => {
-    const sidePadding = window.innerWidth * 0.1;
-    maxShift = Math.max(0, track.scrollWidth - window.innerWidth + sidePadding);
-    gallery.style.height = `${window.innerHeight}px`;
-    galleryTop = gallery.getBoundingClientRect().top + window.scrollY;
+    maxShift = getShift();
     setX(-maxShift * progress);
-  };
-
-  const lock = () => {
-    if (isLocked || maxShift <= 0) return;
-    isLocked = true;
-    galleryTop = gallery.getBoundingClientRect().top + window.scrollY;
-    window.scrollTo(0, galleryTop);
-    gallery.classList.add('is-wheel-locked');
-  };
-
-  const unlock = (direction) => {
-    if (!isLocked) return;
-    isLocked = false;
-    gallery.classList.remove('is-wheel-locked');
-    window.scrollTo(0, direction > 0 ? galleryTop + window.innerHeight + 2 : Math.max(0, galleryTop - 2));
-  };
-
-  const shouldStartLock = (direction) => {
-    const rect = gallery.getBoundingClientRect();
-    if (direction > 0) {
-      return rect.top <= 2 && rect.bottom > window.innerHeight * 0.35 && progress < 1;
-    }
-    return rect.top < window.innerHeight * 0.65 && rect.bottom >= window.innerHeight - 2 && progress > 0;
   };
 
   const onWheel = (event) => {
+    const rect = gallery.getBoundingClientRect();
+    const inView = rect.top <= 0 && rect.bottom >= window.innerHeight;
+    if (!inView || maxShift <= 0) return;
+
     const direction = Math.sign(event.deltaY || 0);
     if (!direction) return;
 
-    if (!isLocked) {
-      if (!shouldStartLock(direction)) return;
-      lock();
-    }
-
     const atStart = progress <= 0.001;
     const atEnd = progress >= 0.999;
-    if ((direction < 0 && atStart) || (direction > 0 && atEnd)) {
-      unlock(direction);
-      return;
-    }
+    if ((direction < 0 && atStart) || (direction > 0 && atEnd)) return;
 
     event.preventDefault();
-    const speed = Math.max(1200, maxShift * 0.95);
-    progress = clamp(progress + event.deltaY / speed, 0, 1);
+    progress = clamp(progress + event.deltaY / Math.max(1600, maxShift * 1.25), 0, 1);
     setX(-maxShift * progress);
   };
 
-  const onScroll = () => {
-    if (isLocked) {
-      window.scrollTo(0, galleryTop);
-    }
-  };
-
-  const refreshSoon = () => window.requestAnimationFrame(measure);
-
-  track.querySelectorAll('img').forEach((img) => {
-    if (!img.complete) img.addEventListener('load', refreshSoon, { once: true });
-  });
-
   measure();
   window.addEventListener('load', measure, { once: true });
-  window.addEventListener('resize', refreshSoon, { passive: true });
+  window.addEventListener('resize', () => window.requestAnimationFrame(measure), { passive: true });
   window.addEventListener('wheel', onWheel, { passive: false });
-  window.addEventListener('scroll', onScroll, { passive: true });
 })();

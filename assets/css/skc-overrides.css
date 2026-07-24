@@ -1421,11 +1421,11 @@ body ::selection {
 
 /* skc-react-lab-cube-host-20260718 */
 .skc-lab-cube--react {
-  padding: 0 !important;
+  padding: 0 0 clamp(110px, 12vh, 190px) !important;
   margin: 0 !important;
   background: transparent !important;
   color: inherit;
-  min-height: auto !important;
+  min-height: max(980px, 112vh) !important;
   overflow: visible;
 }
 
@@ -1437,6 +1437,7 @@ body ::selection {
 .skc-lab-cube--react #skc-react-lab-cube-root {
   display: block;
   width: 100%;
+  min-height: inherit;
 }
 
 /* skc-global-cursor-trail-20260718 */

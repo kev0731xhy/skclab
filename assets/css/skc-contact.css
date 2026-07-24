@@ -292,15 +292,28 @@
   color: rgba(62, 9, 17, .62);
 }
 
+.skc-form-note:empty {
+  display: none;
+}
+
 .skc-contact-submit {
   margin-top: clamp(24px, 3vw, 44px);
   border-color: var(--contact-accent) !important;
   background: var(--contact-accent) !important;
   color: #3e0911 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
 }
 
 .skc-contact-submit .button__text {
   color: #3e0911 !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
 }
 
 .skc-contact-submit:active {
