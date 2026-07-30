@@ -204,6 +204,7 @@
 }
 
 .skc-school-gallery {
+  height: 100vh;
   min-height: 100vh;
   background: #111;
   color: #f8eee8;
@@ -220,6 +221,15 @@
   flex-direction: column;
   justify-content: center;
   padding: clamp(52px, 6vw, 90px) 0;
+}
+
+.skc-school-gallery.is-wheel-locked .skc-school-gallery__sticky {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 20;
+  background: #111;
 }
 
 .skc-school-gallery__intro {

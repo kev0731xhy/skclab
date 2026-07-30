@@ -9,6 +9,10 @@
     return;
   }
 
+  if (window.matchMedia("(max-width: 767px)").matches) {
+    return;
+  }
+
   const video = overlay.querySelector(".skc-entry-animation__video");
   const body = document.body;
   const PLAYBACK_RATE = 2;

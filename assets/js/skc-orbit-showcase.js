@@ -8,6 +8,16 @@
     return;
   }
 
+  if (window.matchMedia("(max-width: 767px)").matches) {
+    section.classList.remove("is-wheel-locked");
+    arc.removeAttribute("aria-hidden");
+    cards.forEach(function (card) {
+      card.removeAttribute("style");
+      card.removeAttribute("aria-hidden");
+    });
+    return;
+  }
+
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const hasGsap = typeof window.gsap !== "undefined";
   let progress = 0;
@@ -25,12 +35,12 @@
     const width = window.innerWidth;
     const height = window.innerHeight;
     const mobile = width < 760;
-    const visibleCount = Math.min(cards.length, mobile ? 8 : 16);
+    const visibleCount = Math.min(cards.length, mobile ? 8 : 12);
     const step = 180 / Math.max(1, visibleCount - 1);
 
     return {
-      radiusX: mobile ? width * 0.55 : width * 0.505,
-      radiusY: mobile ? height * 0.73 : height * 0.82,
+      radiusX: mobile ? width * 0.55 : width * 0.49,
+      radiusY: mobile ? height * 0.73 : height * 0.76,
       step,
       travel: Math.max(0, (cards.length - visibleCount) * step),
       edgePad: step * 0.45
@@ -149,12 +159,13 @@
     const atStart = targetProgress <= 0.001;
     const atEnd = targetProgress >= 0.999;
     if ((direction < 0 && atStart) || (direction > 0 && atEnd)) {
+      event.preventDefault();
       unlock();
       return;
     }
 
     event.preventDefault();
-    const speed = window.matchMedia("(max-width: 760px)").matches ? 4600 : 6200;
+    const speed = 11200;
     const normalizedDelta = clamp(event.deltaY, -110, 110);
     requestProgress(targetProgress + normalizedDelta / speed);
   }
